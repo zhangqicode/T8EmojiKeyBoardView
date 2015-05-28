@@ -35,10 +35,16 @@ NSString *const RecentUsedEmojiCharactersKey = @"RecentUsedEmojiCharactersKey";
 
 #pragma mark - View Related Methods
 
+- (instancetype)init
+{
+    return [self initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 216)];
+}
+
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.clipsToBounds = NO;
+        self.autoresizingMask = UIViewAutoresizingFlexibleHeight;
         self.category = [self categoryNameAtIndex:self.defaultSelectedCategory];
         self.backgroundColor = [UIColor colorWithRed:(float)248/255 green:(float)248/255 blue:(float)248/255 alpha:1.0];
         self.pageControl = [[UIPageControl alloc] init];
@@ -367,7 +373,7 @@ NSString *const RecentUsedEmojiCharactersKey = @"RecentUsedEmojiCharactersKey";
         _recentLabel.font = [UIFont systemFontOfSize:RecentLabelFontSize];
         _recentLabel.textColor = [UIColor lightGrayColor];
         _recentLabel.textAlignment = NSTextAlignmentCenter;
-        _recentLabel.text = TGLocalized(@"Emoji.notice");
+        _recentLabel.text = NSLocalizedString(@"Recent Used", nil);
         [self addSubview:_recentLabel];
     });
     
